@@ -4,9 +4,10 @@ import {Header} from './components/Header/Header.jsx'
 import {Login} from './pages/Auth/Login/Login.jsx'
 import {SignUp} from './pages/Auth/SignUp/SignUp.jsx'
 import Home from "./pages/Home/Home.jsx"
-import product from './pages/Products/Product.jsx'
-import products from './pages/Products/Product/Products.jsx'
+import Product from './pages/Products/Product/Product.jsx'
+import Products from './pages/Products/Products.jsx'
 import {Profile} from'./pages/Profile/Profile.jsx'
+import {Footer} from './components/Footer/Footer.jsx'
 
 function App() {
 
@@ -18,8 +19,8 @@ function App() {
         
           <Route path='/' element={<Home></Home>}></Route>
           <Route path='/Home' element={<Home></Home>}></Route>
-          <Route path='/products' element={<products></products>}></Route>
-          <Route path='/products/:id' element={<product></product>}></Route>
+          <Route path='/products' element={<Products></Products>}></Route>
+          <Route path='/products/:id' element={<Product></Product>}></Route>
           <Route path='/login' element={<Login></Login>}></Route>
           <Route path='/signup' element={<SignUp></SignUp>}></Route>
           <Route path='/profile' element={<Profile></Profile>}></Route>
