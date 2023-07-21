@@ -1,6 +1,6 @@
 import { useReducer } from "react"
 import UserContext from "./UserContext"
-import userReducers from "./UserReduce"
+import userReducers from "./UserReducer"
 
 const UserState= (props)=>{
     const initialState={
