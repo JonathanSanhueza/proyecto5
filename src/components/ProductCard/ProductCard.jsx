@@ -1,19 +1,19 @@
 import { Card, Button } from "react-bootstrap"
 
-export const ProductCard = ({anillo, productViewPath})=>{
+export const ProductCard = ({product, productViewPath})=>{
     return (
     <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={anillo.imageUrl} />
+        <Card.Img variant="top" src={product.imageUrl} />
         <Card.Body>
-            <Card.Title className="text-center">{anillo.title}</Card.Title>
+            <Card.Title className="text-center">{product.title}</Card.Title>
             <Card.Text className="text-center">
-            {anillo.description}
+            {product.description}
             </Card.Text>
         </Card.Body>
         <Card.Body className="text-center">
-            <Card.Text className="text-center">{anillo.price}
+            <Card.Text className="text-center">{product.price}
             </Card.Text>
-            <Button variant="secondary">Ver</Button>
+            <Button variant="secondary" href={productViewPath}>Ver</Button>
             <Button variant="secondary">Agregar</Button>
         </Card.Body>
     </Card>

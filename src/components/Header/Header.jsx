@@ -10,9 +10,9 @@ export const Header = ()=> {
               height="30"
               className="d-inline-block align-top"
               alt="React Bootstrap logo"
-            />JK Joyeria</Navbar.Brand>
+            />    Tienda de Joyas</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
+        <Navbar.Collapse id="navbarScroll" style={{flexGrow:0}}>
           <Nav
             className="me-auto my-2 my-lg-0"
             style={{ maxHeight: '100px' }}

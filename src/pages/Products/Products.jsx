@@ -59,9 +59,9 @@ export const Products = ()=> {
                 </Col>
             </Row>
             <Row>
-                {products.map(anillo =>{
-            return<Col key={anillo.id}>
-                <ProductCard anillo={ anillo}></ProductCard>
+                {products.map(product =>{
+            return<Col key={product.id}>
+                <ProductCard product={ product} productViewPath={`/products/${ product.id}`}></ProductCard>
             </Col>
         })
         }
