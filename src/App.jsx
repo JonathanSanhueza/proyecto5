@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import {Header} from './components/Header/Header.jsx'
+import UserState from './contexts/users/UserState.jsx'
 import {Login} from './pages/Auth/Login/Login.jsx'
 import {SignUp} from './pages/Auth/SignUp/SignUp.jsx'
 import Home from "./pages/Home/Home.jsx"
@@ -13,7 +14,8 @@ function App() {
 
   return (
     <div className='app'>
-      <BrowserRouter>
+      <UserState>
+        <BrowserRouter>
         <Header></Header>
         <Routes >
         
@@ -26,8 +28,8 @@ function App() {
           <Route path='/profile' element={<Profile></Profile>}></Route>
 
         </Routes>
-      </BrowserRouter>
-      
+        </BrowserRouter>
+      </UserState>
     </div>
   )
 }
