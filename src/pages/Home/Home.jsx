@@ -1,6 +1,16 @@
-import { Carousel, Container } from "react-bootstrap"
-export const Home = ()=> {
+import { useContext,} from "react"
+import { Carousel, Container,} from "react-bootstrap"
+import UserContext from "../../contexts/users/UserContext"
+import Products from "../Products/Products"
+
+export function Home () {
+  const userCtx = useContext(UserContext)
+  const {user, verifyingToken, authStatus}= userCtx
+  
     return (
+      <Container>
+        <h1>{ `Bienvenido ${ user?.fullName || "" }` }</h1>
+        <Container>
         <Carousel>
         <Carousel.Item>
           <img
@@ -40,6 +50,9 @@ export const Home = ()=> {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+      </Container>
+        <Products></Products>
+      </Container>
     )
 }
 

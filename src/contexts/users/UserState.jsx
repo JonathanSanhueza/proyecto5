@@ -1,11 +1,12 @@
 import { useReducer } from "react"
 import UserContext from "./UserContext"
 import userReducers from "./UserReducer"
+import axiosClient from "../../config/axios.jsx"
 
 const UserState= (props)=>{
     const initialState={
         user:{
-            id:null,
+            _id:null,
             fullName:null,
             email:null,
         },
@@ -16,8 +17,8 @@ const UserState= (props)=>{
 
     const registerUser = async (dataForm)=>{
         try{
-            const res = await fetch ("http://localhost:4000/auth/signup", {method:'POST', headers:{"Content-type":'application/json', "Accept":'application/json'}, body: JSON.stringify(dataForm)})
-            const payload= await res.json()
+            const res= await axiosClient.post("/auth/signup", dataForm)
+            const payload= await res.data
             dispatch({
                 type:"REGISTRO_EXITOSO",
                 payload:payload
@@ -29,8 +30,8 @@ const UserState= (props)=>{
     
     const loginUser = async (dataForm)=>{
         try{
-            const res = await fetch ("http://localhost:4000/auth/login", {method:'POST', headers:{"Content-type":'application/json', "Accept":'application/json'}, body: JSON.stringify(dataForm)})
-            const payload= await res.json()
+            const res=await axiosClient.post("/auth/login", dataForm)
+            const payload= await res.data
             dispatch({
                 type:"LOGIN_EXITOSO",
                 payload:payload
@@ -40,10 +41,41 @@ const UserState= (props)=>{
         }
     }
 
+    const verifyingToken =async ()=>{
+        const token= localStorage.getItem('token')
+        if (token){
+            axiosClient.defaults.headers.common.Authorization=`Bearer ${token}`
+        } else{
+            delete axiosClient.defaults.headers.common.Authorization
+        }
+
+        try {
+            const res=await axiosClient.get('/users/profile')
+            const userData=res.data
+            dispatch({
+                type:"OBTENER_USUARIO",
+                payload: userData //{name:"..", surname:"..", email:"...",...}
+            })
+        } catch (error) {
+        console.error(error)
+        dispatch ({
+            type:"CERRAR_SESION"
+        })
+        }
+    }
+
+    const logout=()=>{
+        dispatch({
+            type:"CERRAR_SESION"
+        })
+    }
+
     return(
         <UserContext.Provider value={{...globalState,
         registerUser,
-        loginUser
+        loginUser,
+        verifyingToken,
+        logout
         }}>
             {props.children}
         </UserContext.Provider>
