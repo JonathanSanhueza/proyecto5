@@ -9,26 +9,49 @@ import Product from './pages/Products/Product/Product.jsx'
 import Products from './pages/Products/Products.jsx'
 import {Profile} from'./pages/Profile/Profile.jsx'
 import {Footer} from './components/Footer/Footer.jsx'
+import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx'
+import PublicRoute from './components/publicRoute/PublicRoute.jsx'
+import AuthRoute from './components/AuthRoute/AuthRoute.jsx'
+import ShoppingCartState from './contexts/ShoppingCart/ShoppingCartState.jsx'
 
 function App() {
 
   return (
-    <div className='app'>
+    <div className='App'>
       <UserState>
+      <ShoppingCartState>
         <BrowserRouter>
         <Header></Header>
         <Routes >
         
           <Route path='/' element={<Home></Home>}></Route>
-          <Route path='/Home' element={<Home></Home>}></Route>
-          <Route path='/products' element={<Products></Products>}></Route>
-          <Route path='/products/:productId' element={<Product></Product>}></Route>
-          <Route path='/login' element={<Login></Login>}></Route>
-          <Route path='/signup' element={<SignUp></SignUp>}></Route>
-          <Route path='/profile' element={<Profile></Profile>}></Route>
-
+          <Route path='/Home' element={
+          <PublicRoute>
+            <Home></Home>
+          </PublicRoute>
+        }></Route>
+          <Route path='/products' element={<PublicRoute>
+            <Products></Products>
+          </PublicRoute>
+          }></Route>
+          <Route path='/products/:productId' element={<PublicRoute>
+            <Product></Product>
+          </PublicRoute>}></Route>
+          <Route path='/auth/login' element={<AuthRoute>
+            <Login></Login>
+          </AuthRoute>}></Route>
+          <Route path='/auth/signup' element={<AuthRoute>
+            <SignUp></SignUp>
+          </AuthRoute>}></Route>
+          <Route path='/profile' element={
+            <PrivateRoute>
+              <Profile></Profile>
+            </PrivateRoute>
+          }>
+          </Route>
         </Routes>
         </BrowserRouter>
+        </ShoppingCartState>
       </UserState>
     </div>
   )
