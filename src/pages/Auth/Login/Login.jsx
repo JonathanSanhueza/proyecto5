@@ -51,7 +51,7 @@ export const Login = ()=> {
                 <Form.Check type="checkbox" label="Mantener sesión iniciada" />
             </Form.Group>
             <Button className="buttons" variant="secondary" type="submit">
-                Submit
+                Ingresar
             </Button>
             </Form>
             </div>
