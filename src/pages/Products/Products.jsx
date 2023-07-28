@@ -76,7 +76,7 @@ export const Products = ()=> {
         <Container fluid>
             <Row>
                 <Col>
-                <h1>Catálogo de productos {user?.fullName|| "invitado"}</h1>
+                <h1 className="login-title" style={{ textAlign: 'center' }}>Catálogo de productos {user?.fullName|| "Cliente"}</h1>
                 </Col>
             </Row>
             <Row>

@@ -6,7 +6,7 @@ export const ProductCard = ({product, productViewPath})=>{
     const shoppingCartCtx=useContext(ShoppingCartContext)
     const{addProduct}=shoppingCartCtx
     return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem' }} className="login-title">
         <Card.Img variant="top" src={product.imageUrl} />
         <Card.Body>
             <Card.Title className="text-center">{product.title}</Card.Title>
@@ -15,10 +15,10 @@ export const ProductCard = ({product, productViewPath})=>{
             </Card.Text>
         </Card.Body>
         <Card.Body className="text-center">
-            <Card.Text className="text-center">${product.price} USD
+            <Card.Text className="text-center">${product.price}.00 USD
             </Card.Text>
-            <Button variant="secondary" href={productViewPath}>Ver</Button>
-            <Button variant="secondary" onClick={()=>{
+            <Button size="sm" variant="secondary" href={productViewPath}>Ver</Button>
+            <Button style={{marginLeft:'16px'}} size="sm" variant="secondary" onClick={()=>{
                 addProduct(product)
             }}>Agregar</Button>
         </Card.Body>

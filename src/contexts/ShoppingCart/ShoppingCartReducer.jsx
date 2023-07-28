@@ -41,7 +41,7 @@ const shoppingCartReducer =(globalState,action)=>{
                     products: productsFiltered
                 }
 
-        case "OBTENER_PRODUCTS":
+        case "OBTENER_PRODUCTO":
             const productsFromStorage= localStorage.getItem(SHOPPING_CART_LS_KEY)
             if(!productsFromStorage){
                 localStorage.setItem( SHOPPING_CART_LS_KEY, JSON.stringify( [] ) )

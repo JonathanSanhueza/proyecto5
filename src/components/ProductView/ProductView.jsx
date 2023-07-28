@@ -1,6 +1,10 @@
+import { useContext } from 'react'
 import {Button, Col, Container, Image, Row} from 'react-bootstrap'
+import ShoppingCartContext from '../../contexts/ShoppingCart/ShoppingCartContext'
 
 export const ProductView = ({product})=> {
+    const shoppingCartCtx= useContext(ShoppingCartContext)
+    const {addProduct}= shoppingCartCtx
     return (
         <Container fluid style={{marginTop:20}}>
             <Row style={{justifyContent:"center"}}>
@@ -16,8 +20,8 @@ export const ProductView = ({product})=> {
                 </Row>
                 <Row>
                     <Col style={{textAlign:"center"}}>
-                        <Button variant="secondary">Comprar</Button>
-                        <Button variant="secondary">Agregar al Carrito</Button>
+                        <Button variant="secondary" onClick={ () => {
+                addProduct( product )}}>Agregar al Carrito</Button>
                     </Col>
                 </Row>
                 </Col>

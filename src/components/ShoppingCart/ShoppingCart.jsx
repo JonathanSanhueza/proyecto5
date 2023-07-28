@@ -73,7 +73,10 @@ export const ShoppingCart=({showShoppingCart, handleCloseShoppingCart})=>{
                 }
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="primary" type='button' onClick={handleCloseShoppingCart}>
+                <Button variant="secondary" type='button' onClick={ () => {
+                    navigate( '/checkout' )
+                    handleCloseShoppingCart()
+                } }>
                 Ir a pagar
                 </Button>
             </Modal.Footer>
