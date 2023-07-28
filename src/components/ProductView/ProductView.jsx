@@ -6,7 +6,7 @@ export const ProductView = ({product})=> {
     const shoppingCartCtx= useContext(ShoppingCartContext)
     const {addProduct}= shoppingCartCtx
     return (
-        <Container fluid style={{marginTop:20}}>
+        <Container fluid style={{marginTop:20, marginBottom:60}}>
             <Row style={{justifyContent:"center"}}>
                 <Col xs={12} sm={12} md={6} style={{textAlign:"center"}}>
                 <Image src={product.imageUrl} width={500} height={500} fluid>
