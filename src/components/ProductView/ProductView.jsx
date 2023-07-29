@@ -16,7 +16,7 @@ export const ProductView = ({product})=> {
                 <Row style={{gap:40}}>
                     <Col className='text-center' xs={12} sm={12} md={12}>{product.title}</Col>
                     <Col className='text-center' xs={12} sm={12} md={12}>{product.description}</Col>
-                    <Col className='text-center' xs={12} sm={12} md={12}>${product.price}.00</Col>
+                    <Col className='text-center' xs={12} sm={12} md={12}>${product.price}.00   USD</Col>
                 </Row>
                 <Row>
                     <Col style={{textAlign:"center"}}>
